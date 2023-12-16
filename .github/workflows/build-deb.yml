@@ -1,0 +1,28 @@
+name: Build DEB
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: sudo apt-get install debhelper
+
+      - name: Build DEB package
+        run: |
+          cd labs/debian
+          dpkg-deb --build debian
+
+      - name: Upload DEB artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: count-files-deb
+          path: labs/debian/*.deb

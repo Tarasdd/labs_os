@@ -1,0 +1,28 @@
+name: Build RPM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: sudo apt-get install rpm
+
+      - name: Build RPM package
+        run: |
+          cd labs/rpm
+          rpmbuild -bb SPECS/count_files.spec
+
+      - name: Upload RPM artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: count-files-rpm
+          path: labs/rpm/RPMS/x86_64/*.rpm
