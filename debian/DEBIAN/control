@@ -4,5 +4,6 @@ Architecture: all
 Section: base
 Priority: optional
 Maintainer: Taras  <tarikgera529@gmail.com>
-Description: Script to count files in dir /etc
+Description: Script to count files in dir 
+
 
