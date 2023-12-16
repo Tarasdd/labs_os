@@ -1,0 +1,8 @@
+Package: count-files
+Version: 1.0-1
+Architecture: all
+Section: base
+Priority: optional
+Maintainer: Taras  <tarikgera529@gmail.com>
+Description: Script to count files in dir /etc
+
