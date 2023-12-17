@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    sh 'docker run -it --rm my-jenkins-image'
+                }
+            }
+        }
+
+        stage('Execute Script') {
+            steps {
+                script {
+                    sh 'bash /home/taras/labs/count_files.sh'
+                }
+            }
+        }
+    }
+}
+
+
